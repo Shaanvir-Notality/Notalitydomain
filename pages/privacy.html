@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy — Notality</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" href="../assets/icons/favicon.ico">
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/styles.css">
@@ -12,17 +15,40 @@
 
   <header class="site-header">
     <nav class="nav">
-      <a href="../index.html" class="nav-logo">Notality</a>
+      <a href="../index.html" class="nav-logo">
+        <svg class="logo-icon" viewBox="0 0 60 68" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="logoGrad" x1="5" y1="8" x2="52" y2="60" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#22C9B8"/>
+              <stop offset="0.55" stop-color="#3DC87A"/>
+              <stop offset="1" stop-color="#50D26A"/>
+            </linearGradient>
+          </defs>
+          <rect x="28" y="10" width="4.5" height="44" rx="2.25" fill="url(#logoGrad)"/>
+          <ellipse cx="19" cy="52" rx="13" ry="8.5" transform="rotate(-18 19 52)" fill="url(#logoGrad)"/>
+          <path d="M32.5 12 C50 14 56 26 48 38" stroke="url(#logoGrad)" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M43 35 L48 38 L44 44" stroke="url(#logoGrad)" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="logo-text">NOTALITY</span>
+      </a>
+      <div class="nav-right">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../index.html#signup" class="btn-nav">Sign up now</a>
+      </div>
     </nav>
   </header>
 
-  <main style="max-width: 680px; margin: 0 auto; padding: 64px 24px;">
-    <h1 style="font-size: 32px; font-weight: 700; margin-bottom: 32px;">Privacy Policy</h1>
+  <main style="max-width: 680px; margin: 0 auto; padding: 64px 24px 96px;">
+    <h1 style="font-size: 32px; font-weight: 800; color: var(--navy); margin-bottom: 32px; letter-spacing: -0.5px;">Privacy Policy</h1>
+    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 32px;">Last updated: June 2026</p>
     <!-- Add privacy policy content here -->
   </main>
 
   <footer class="site-footer">
-    <p>&copy; 2026 Notality. All rights reserved.</p>
+    <div class="footer-inner">
+      <hr class="footer-rule">
+      <p class="copyright">© 2026 Notality. Tonality through Notality. All rights reserved.</p>
+    </div>
   </footer>
 
 </body>
