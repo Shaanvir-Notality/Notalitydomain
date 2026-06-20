@@ -46,10 +46,11 @@ body {
   display: flex;
   align-items: center;
   align-self: stretch;
+  padding: 12px 0;
 }
 
 .logo-img {
-  height: 100%;
+  height: 90%;
   width: auto;
   display: block;
   object-fit: contain;
