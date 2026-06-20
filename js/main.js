@@ -26,6 +26,7 @@ form.addEventListener('submit', function (e) {
     f_id:                            MC_F_ID,
     EMAIL:                           email,
     FNAME:                           name,
+    MMERGE7:                         phoneType,
     ['b_' + MC_U + '_' + MC_ID]:    '',
     c:                               callbackName,
   });
@@ -58,7 +59,7 @@ form.addEventListener('submit', function (e) {
     } else {
       const msg = (data.msg || '').toLowerCase();
       if (msg.includes('already subscribed')) {
-        submitBtn.textContent = "You’re already signed up!";
+        submitBtn.textContent = "You're already signed up!";
       } else {
         submitBtn.textContent = 'Something went wrong — try again';
       }
