@@ -1,4 +1,4 @@
-const FORMSPREE_ID = 'YOUR_FORM_ID'; // replace with your ID from formspree.io/f/xxxxxxxx
+const FORMSPREE_ID = 'mojzgbpb';
 
 const form = document.getElementById('signupForm');
 const success = document.getElementById('formSuccess');
