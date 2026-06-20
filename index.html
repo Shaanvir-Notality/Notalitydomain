@@ -44,9 +44,15 @@
           <p class="signup-desc">Please register your interest below and we will contact you as soon as the app is released.</p>
 
           <form class="signup-form" id="signupForm" novalidate>
-            <div class="form-group">
-              <label for="name">Name <span class="req">*</span></label>
-              <input type="text" id="name" name="name" autocomplete="name" required>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="fname" autocomplete="given-name">
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lname" autocomplete="family-name">
+              </div>
             </div>
             <div class="form-group">
               <label for="email">Email <span class="req">*</span></label>
@@ -66,7 +72,13 @@
                 </svg>
               </div>
             </div>
-            <button type="submit" class="btn-submit">Submit</button>
+            <div class="form-group form-group--checkbox">
+              <label class="checkbox-label">
+                <input type="checkbox" id="marketingConsent" name="marketingConsent">
+                <span>I'd like to receive marketing emails about Notality, including updates, new features, and offers.</span>
+              </label>
+            </div>
+            <button type="submit" class="btn-submit" disabled>Submit</button>
           </form>
 
           <div class="form-success" id="formSuccess" hidden>

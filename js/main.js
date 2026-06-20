@@ -2,19 +2,25 @@ const MC_U    = 'b76e13b4e5d818dcdd8d7fa73';
 const MC_ID   = '625d0d595c';
 const MC_F_ID = '0095d7e1f0';
 
-const form    = document.getElementById('signupForm');
-const success = document.getElementById('formSuccess');
+const form      = document.getElementById('signupForm');
+const success   = document.getElementById('formSuccess');
+const consent   = document.getElementById('marketingConsent');
+const submitBtn = form.querySelector('.btn-submit');
+
+consent.addEventListener('change', function () {
+  submitBtn.disabled = !this.checked;
+});
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();
 
-  const name      = form.querySelector('#name').value.trim();
+  const fname     = form.querySelector('#fname').value.trim();
+  const lname     = form.querySelector('#lname').value.trim();
   const email     = form.querySelector('#email').value.trim();
   const phoneType = form.querySelector('#phone-type').value;
 
-  if (!name || !email || !phoneType) return;
+  if (!email || !phoneType) return;
 
-  const submitBtn = form.querySelector('.btn-submit');
   submitBtn.textContent = 'Sending…';
   submitBtn.disabled = true;
 
@@ -25,7 +31,8 @@ form.addEventListener('submit', function (e) {
     id:                              MC_ID,
     f_id:                            MC_F_ID,
     EMAIL:                           email,
-    FNAME:                           name,
+    FNAME:                           fname,
+    LNAME:                           lname,
     MMERGE7:                         phoneType,
     ['b_' + MC_U + '_' + MC_ID]:    '',
     c:                               callbackName,

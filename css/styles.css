@@ -145,6 +145,12 @@ body {
 
 /* ── Form ────────────────────────────────────────────────────────────────── */
 
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 20px;
+}
+
 .form-group {
   margin-bottom: 26px;
 }
@@ -208,6 +214,29 @@ body {
   pointer-events: none;
 }
 
+.form-group--checkbox {
+  margin-bottom: 16px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  accent-color: var(--navy);
+  cursor: pointer;
+}
+
 .btn-submit {
   width: 100%;
   margin-top: 8px;
@@ -222,9 +251,14 @@ body {
   transition: border-color 0.15s, color 0.15s;
 }
 
-.btn-submit:hover {
+.btn-submit:hover:not(:disabled) {
   border-color: var(--navy);
   color: var(--navy);
+}
+
+.btn-submit:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 .form-success {
