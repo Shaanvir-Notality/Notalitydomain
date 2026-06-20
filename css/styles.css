@@ -35,7 +35,8 @@ body {
 .nav {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 14px 40px;
+  padding: 0 40px;
+  height: 110px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -44,12 +45,14 @@ body {
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  align-self: stretch;
 }
 
 .logo-img {
-  height: 90px;
+  height: 100%;
   width: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .nav-right {
