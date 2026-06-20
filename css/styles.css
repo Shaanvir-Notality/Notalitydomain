@@ -100,6 +100,10 @@ body {
   padding-bottom: 52px;
 }
 
+.accent-letter {
+  color: #2d9b98;
+}
+
 .hero h1 {
   font-size: clamp(38px, 4.8vw, 62px);
   font-weight: 800;
