@@ -4,10 +4,9 @@ import { Resend } from 'resend';
 const API_KEY = process.env.MAILCHIMP_API_KEY!;
 const SERVER_PREFIX = process.env.MAILCHIMP_SERVER_PREFIX!; // e.g. "us21"
 const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID!;
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 async function sendWelcomeEmail(email: string, name?: string) {
-  const { data, error } = await resend.emails.send({
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const { error } = await resend.emails.send({
     from: 'notality <welcome@notality.co.uk>',
     to: email,
     subject: 'Welcome to notality 🎵',
