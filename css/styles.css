@@ -656,6 +656,7 @@ body {
 }
 
 .social-icon.youtube { background: #ff0000; }
+.social-icon.instagram { background: #e1306c; }
 
 .social-icon:hover { opacity: 0.78; }
 
