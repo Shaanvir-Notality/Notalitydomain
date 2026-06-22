@@ -1,25 +1,20 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { render } from '@react-email/components';
+import WelcomeEmail from '@/emails/WelcomeEmail';
 
 const API_KEY = process.env.MAILCHIMP_API_KEY!;
 const SERVER_PREFIX = process.env.MAILCHIMP_SERVER_PREFIX!; // e.g. "us21"
 const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID!;
 async function sendWelcomeEmail(email: string, name?: string) {
   const resend = new Resend(process.env.RESEND_API_KEY);
+  const html = await render(WelcomeEmail({ name }));
+
   const { error } = await resend.emails.send({
     from: 'notality <welcome@notality.co.uk>',
     to: email,
     subject: 'Welcome to notality 🎵',
-    text: [
-      `Hey${name ? ` ${name}` : ' there'},`,
-      '',
-      "Thanks so much for signing up — it genuinely means a lot to have you here.",
-      '',
-      "notality is still in the works, but when it's ready to launch, you'll be the first in the world to know. No fanfare needed on your end — just keep an eye on your inbox.",
-      '',
-      'Talk soon,',
-      'The notality team',
-    ].join('\n'),
+    html,
   });
 
   if (error) {
