@@ -11,20 +11,17 @@ export default function MarketingSignupForm() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-
-    if (!consented) {
-      setStatus('error');
-      setErrorMsg('Please tick the box to confirm you want to receive updates.');
-      return;
-    }
-
     setStatus('submitting');
     setErrorMsg('');
 
     const form = e.currentTarget;
     const formData = new FormData(form);
+    const firstName = formData.get('firstName')?.toString().trim();
+    const lastName = formData.get('lastName')?.toString().trim();
+    const name = [firstName, lastName].filter(Boolean).join(' ') || undefined;
+
     const payload = {
-      name: formData.get('name')?.toString().trim(),
+      name,
       email: formData.get('email')?.toString().trim(),
     };
 
@@ -53,61 +50,55 @@ export default function MarketingSignupForm() {
 
   if (status === 'success') {
     return (
-      <div className="rounded-lg border border-green-200 bg-green-50 p-4 text-sm text-green-800">
-        You're on the list! Check your inbox to confirm (if double opt-in is enabled).
-      </div>
+      <p className="form-success">
+        You&apos;re on the list — we&apos;ll be in touch soon! 🎵
+      </p>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3 max-w-md">
-      <div>
-        <label htmlFor="signup-name" className="block text-sm font-medium mb-1">
-          Name (optional)
-        </label>
-        <input
-          id="signup-name"
-          name="name"
-          type="text"
-          className="w-full rounded-md border px-3 py-2 text-sm"
-        />
+    <form onSubmit={handleSubmit}>
+
+      <div className="form-row">
+        <div className="form-group">
+          <label htmlFor="signup-first-name">First name</label>
+          <input id="signup-first-name" name="firstName" type="text" />
+        </div>
+        <div className="form-group">
+          <label htmlFor="signup-last-name">Last name</label>
+          <input id="signup-last-name" name="lastName" type="text" />
+        </div>
       </div>
 
-      <div>
-        <label htmlFor="signup-email" className="block text-sm font-medium mb-1">
-          Email *
+      <div className="form-group">
+        <label htmlFor="signup-email">
+          Email <span className="req">*</span>
         </label>
-        <input
-          id="signup-email"
-          name="email"
-          type="email"
-          required
-          className="w-full rounded-md border px-3 py-2 text-sm"
-        />
+        <input id="signup-email" name="email" type="email" required />
       </div>
 
-      <div className="flex items-start gap-2">
-        <input
-          id="marketing-consent"
-          type="checkbox"
-          checked={consented}
-          onChange={(e) => setConsented(e.target.checked)}
-          className="mt-1"
-        />
-        <label htmlFor="marketing-consent" className="text-sm text-gray-700">
-          I'd like to receive occasional updates about notality
+      <div className="form-group form-group--checkbox">
+        <label className="checkbox-label" htmlFor="marketing-consent">
+          <input
+            id="marketing-consent"
+            type="checkbox"
+            checked={consented}
+            onChange={(e) => setConsented(e.target.checked)}
+          />
+          I&apos;d like to receive marketing emails about Notality, including updates, new features, and offers.
         </label>
       </div>
 
-      {status === 'error' && <p className="text-sm text-red-600">{errorMsg}</p>}
+      {status === 'error' && <p className="form-error">{errorMsg}</p>}
 
       <button
         type="submit"
-        disabled={status === 'submitting'}
-        className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
+        className="btn-submit"
+        disabled={!consented || status === 'submitting'}
       >
-        {status === 'submitting' ? 'Signing up...' : 'Sign up'}
+        {status === 'submitting' ? 'Signing up…' : 'Sign up'}
       </button>
+
     </form>
   );
 }

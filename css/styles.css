@@ -269,6 +269,12 @@ body {
   color: var(--teal);
 }
 
+.form-error {
+  font-size: 13px;
+  color: #c0392b;
+  margin-bottom: 10px;
+}
+
 /* ── Right Column ────────────────────────────────────────────────────────── */
 
 .content-right {
