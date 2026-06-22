@@ -3,7 +3,7 @@ import MarketingSignupForm from '@/components/MarketingSignupForm';
 export default function Home() {
   return (
     <>
-      <header className="site-header">
+<header className="site-header">
         <nav className="nav">
           <a href="/" className="nav-logo">
             <img src="/assets/images/logo-transparent.png" alt="Notality" className="logo-img" />

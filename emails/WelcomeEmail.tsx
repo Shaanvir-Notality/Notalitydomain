@@ -5,6 +5,8 @@ import {
   Heading,
   Hr,
   Html,
+  Img,
+  Link,
   Preview,
   Section,
   Text,
@@ -12,18 +14,24 @@ import {
 
 interface WelcomeEmailProps {
   name?: string;
+  unsubscribeUrl?: string;
 }
 
-export default function WelcomeEmail({ name }: WelcomeEmailProps) {
+export default function WelcomeEmail({ name, unsubscribeUrl }: WelcomeEmailProps) {
   return (
     <Html>
       <Head />
-      <Preview>Welcome to notality 🎵</Preview>
+      <Preview>Welcome to Notality 🎵</Preview>
       <Body style={body}>
         <Container style={container}>
 
           <Section style={header}>
-            <Text style={logo}>notality</Text>
+            <Img
+              src="https://notality.co.uk/assets/images/logo-transparent.png"
+              alt="Notality"
+              height={64}
+              style={{ display: 'block', margin: '0 auto' }}
+            />
           </Section>
 
           <Section style={content}>
@@ -36,14 +44,14 @@ export default function WelcomeEmail({ name }: WelcomeEmailProps) {
             </Text>
 
             <Text style={paragraph}>
-              notality is still in the works, but when it's ready to launch,
+              Notality is still in the works, but when it's ready to launch,
               you'll be the first in the world to know. No fanfare needed on
               your end — just keep an eye on your inbox.
             </Text>
 
             <Text style={paragraph}>
               Talk soon,<br />
-              <strong>The notality team</strong>
+              <strong>The Notality team</strong>
             </Text>
           </Section>
 
@@ -54,7 +62,13 @@ export default function WelcomeEmail({ name }: WelcomeEmailProps) {
               © 2026 Notality. Tonality through Notality.
             </Text>
             <Text style={footer}>
-              You're receiving this because you signed up at notality.co.uk
+              You're receiving this because you signed up for updates at notality.co.uk.{' '}
+              {unsubscribeUrl ? (
+                <Link href={unsubscribeUrl} style={unsubscribeLink}>Unsubscribe</Link>
+              ) : (
+                'Unsubscribe'
+              )}{' '}
+              from these emails at any time.
             </Text>
           </Section>
 
@@ -66,6 +80,7 @@ export default function WelcomeEmail({ name }: WelcomeEmailProps) {
 
 WelcomeEmail.PreviewProps = {
   name: 'Shaan',
+  unsubscribeUrl: 'https://notality.co.uk/api/unsubscribe?e=preview',
 } satisfies WelcomeEmailProps;
 
 const body: React.CSSProperties = {
@@ -83,14 +98,7 @@ const header: React.CSSProperties = {
   backgroundColor: '#eceeed',
   borderRadius: '12px 12px 0 0',
   padding: '24px 40px',
-};
-
-const logo: React.CSSProperties = {
-  fontSize: '22px',
-  fontWeight: '800',
-  color: '#1d3557',
-  margin: '0',
-  letterSpacing: '-0.5px',
+  textAlign: 'center',
 };
 
 const content: React.CSSProperties = {
@@ -123,4 +131,9 @@ const footer: React.CSSProperties = {
   color: '#718096',
   textAlign: 'center',
   margin: '4px 0',
+};
+
+const unsubscribeLink: React.CSSProperties = {
+  color: '#718096',
+  textDecoration: 'underline',
 };

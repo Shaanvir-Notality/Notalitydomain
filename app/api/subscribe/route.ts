@@ -8,13 +8,16 @@ const SERVER_PREFIX = process.env.MAILCHIMP_SERVER_PREFIX!; // e.g. "us21"
 const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID!;
 async function sendWelcomeEmail(email: string, name?: string) {
   const resend = new Resend(process.env.RESEND_API_KEY);
-  const html = await render(WelcomeEmail({ name }));
+  const unsubscribeUrl = `https://notality.co.uk/api/unsubscribe?e=${Buffer.from(email).toString('base64url')}`;
+  const html = await render(WelcomeEmail({ name, unsubscribeUrl }));
+  const text = await render(WelcomeEmail({ name, unsubscribeUrl }), { plainText: true });
 
   const { error } = await resend.emails.send({
     from: 'notality <welcome@notality.co.uk>',
     to: email,
     subject: 'Welcome to notality 🎵',
     html,
+    text,
   });
 
   if (error) {
