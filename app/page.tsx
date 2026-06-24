@@ -44,15 +44,21 @@ export default function Home() {
           <div className="hero-right">
             <div className="hero-glow" />
             <div className="hero-chip chip-tuner">
-              <span className="hero-chip-dot" />
-              Tuner · In tune · F4
+              <span className="hero-chip-icon chip-icon-green">✓</span>
+              <div>
+                <div className="hero-chip-label">Tuner</div>
+                <div className="hero-chip-value">In tune · F4</div>
+              </div>
             </div>
             <div className="phone-wrap">
               <img src="/assets/images/phonedemo-main.png" alt="Notality app demo" className="phone-demo-img" />
             </div>
             <div className="hero-chip chip-chord">
-              <span className="hero-chip-dot" />
-              Chord builder · Cmaj7 saved
+              <span className="hero-chip-icon chip-icon-teal">♪</span>
+              <div>
+                <div className="hero-chip-label">Chord builder</div>
+                <div className="hero-chip-value">Cmaj7 saved</div>
+              </div>
             </div>
           </div>
         </div>
