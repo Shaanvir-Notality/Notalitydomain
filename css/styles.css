@@ -835,19 +835,21 @@ body {
 
 /* ── Responsive ───────────────────────────────────────────────────────────── */
 
+/* Tablet: scale down phone but keep two-column hero */
 @media (max-width: 900px) {
   .hero {
-    grid-template-columns: 1fr;
-    padding: 48px var(--pad) 56px;
-    gap: 48px;
+    padding: 40px var(--pad) 52px;
+    gap: 28px;
   }
 
-  .hero-left { max-width: 100%; }
+  .hero-right { min-height: 400px; }
 
-  .hero-right { order: -1; }
+  .phone-demo-img { max-height: 420px; }
 
-  .chip-tuner { left: 4px; }
-  .chip-chord { right: 4px; }
+  .hero-glow { width: 320px; height: 320px; }
+
+  .chip-tuner { left: 0; }
+  .chip-chord { right: 0; }
 
   .waitlist-panel {
     grid-template-columns: 1fr;
@@ -861,15 +863,14 @@ body {
   .footer-col-brand { grid-column: 1 / -1; }
 }
 
+/* Hide nav links below 680px */
 @media (max-width: 680px) {
   .nav-links { display: none; }
 
-  .form-row { grid-template-columns: 1fr; }
-
-  .section-wrap { padding: 72px var(--pad); }
+  .section-wrap { padding: 64px var(--pad); }
 
   .craft-section,
-  .waitlist-section { padding-bottom: 72px; }
+  .waitlist-section { padding-bottom: 64px; }
 
   .craft-band { padding: 48px var(--pad); }
 
@@ -883,10 +884,57 @@ body {
   .footer-col-brand { grid-column: auto; }
 }
 
-@media (max-width: 480px) {
-  .hero h1 { letter-spacing: -0.01em; }
+/* Mobile: compact side-by-side hero — text left, small phone right */
+@media (max-width: 600px) {
+  .hero {
+    grid-template-columns: 1fr 108px;
+    padding: 20px 16px 32px;
+    gap: 12px;
+    align-items: flex-start;
+  }
 
-  .hero-ctas { gap: 10px; }
+  .hero-badge {
+    font-size: 11px;
+    padding: 5px 10px 5px 8px;
+    margin-bottom: 14px;
+  }
+
+  .hero h1 {
+    font-size: clamp(26px, 6vw, 34px);
+    line-height: 1.08;
+    margin-bottom: 10px;
+  }
+
+  .hero-lead {
+    font-size: 13px;
+    line-height: 1.55;
+    margin-bottom: 16px;
+  }
+
+  .hero-ctas {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .btn-primary,
+  .btn-outline {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .hero-fine { display: none; }
+
+  .hero-right { min-height: auto; }
+
+  .phone-demo-img { max-height: 210px; }
+
+  .hero-glow { width: 150px; height: 150px; }
+
+  /* Chips overlap text at this size — hide them */
+  .hero-chip { display: none; }
+
+  .form-row { grid-template-columns: 1fr; }
 
   .signup-form-wrap { padding: 28px 20px; }
 }
