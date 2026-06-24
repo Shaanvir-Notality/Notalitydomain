@@ -63,7 +63,7 @@ body {
   display: flex;
   align-items: center;
   align-self: stretch;
-  padding: 14px 0;
+  padding: 8px 0;
 }
 
 .logo-img {
@@ -771,7 +771,7 @@ body {
 }
 
 .footer-logo-img {
-  height: 34px;
+  height: 46px;
   width: auto;
   display: block;
   object-fit: contain;
