@@ -5,7 +5,10 @@ import '../css/styles.css';
 export const metadata: Metadata = {
   title: 'Notality',
   description: 'Notality — Tonality through Notality. Music theory toolkit for practicing musicians.',
-  icons: { icon: '/assets/icons/favicon.ico' },
+  icons: {
+    icon: [{ url: '/assets/icons/favicon.jpg', type: 'image/jpeg' }],
+    apple: '/assets/icons/favicon.jpg',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
