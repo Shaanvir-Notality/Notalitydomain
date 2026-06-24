@@ -7,7 +7,7 @@ export default function Home() {
       <header className="site-header">
         <nav className="nav">
           <a href="/" className="nav-logo">
-            <img src="/assets/images/logo-transparent.png" alt="Notality" className="logo-img" />
+            <img src="/assets/images/logo-transparent.png" alt="Notality — music theory toolkit" className="logo-img" />
           </a>
           <div className="nav-right">
             <div className="nav-links">
@@ -51,7 +51,7 @@ export default function Home() {
               </div>
             </div>
             <div className="phone-wrap">
-              <img src="/assets/images/phonedemo-main.png" alt="Notality app demo" className="phone-demo-img" />
+              <img src="/assets/images/phonedemo-main.png" alt="Notality music theory app on iPhone showing chromatic tuner with F4 note in tune, chord builder, and piano keyboard" className="phone-demo-img" />
             </div>
             <div className="hero-chip chip-chord">
               <span className="hero-chip-icon chip-icon-teal">♪</span>
@@ -169,17 +169,17 @@ export default function Home() {
             <div className="craft-steps">
               <div className="craft-step">
                 <div className="craft-step-num">01</div>
-                <h4>Capture the idea</h4>
+                <h3 className="craft-step-heading">Capture the idea</h3>
                 <p>Hear something you like? Open Notality and capture the chord or melody before the moment&apos;s gone.</p>
               </div>
               <div className="craft-step">
                 <div className="craft-step-num">02</div>
-                <h4>Understand it</h4>
+                <h3 className="craft-step-heading">Understand it</h3>
                 <p>Use the chord builder and key finder to decode what you&apos;re hearing — and understand exactly why it works.</p>
               </div>
               <div className="craft-step">
                 <div className="craft-step-num">03</div>
-                <h4>Save &amp; build</h4>
+                <h3 className="craft-step-heading">Save &amp; build</h3>
                 <p>Bookmark your discoveries, build on progressions, and grow your musical vocabulary one session at a time.</p>
               </div>
             </div>
@@ -236,7 +236,7 @@ export default function Home() {
           <div className="footer-grid">
             <div className="footer-col-brand">
               <div className="footer-logo">
-                <img src="/assets/images/logo-transparent.png" alt="Notality" className="footer-logo-img" />
+                <img src="/assets/images/logo-transparent.png" alt="Notality music theory toolkit" className="footer-logo-img" />
               </div>
               <p className="footer-tagline">
                 Tonality through Notality. A music theory toolkit for practicing musicians.
