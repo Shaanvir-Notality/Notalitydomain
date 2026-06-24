@@ -887,7 +887,7 @@ body {
 /* Mobile: compact side-by-side hero — text left, small phone right */
 @media (max-width: 600px) {
   .hero {
-    grid-template-columns: 1fr 108px;
+    grid-template-columns: 1fr 140px;
     padding: 20px 16px 32px;
     gap: 12px;
     align-items: flex-start;
@@ -927,9 +927,9 @@ body {
 
   .hero-right { min-height: auto; }
 
-  .phone-demo-img { max-height: 210px; }
+  .phone-demo-img { max-height: 270px; }
 
-  .hero-glow { width: 150px; height: 150px; }
+  .hero-glow { width: 190px; height: 190px; }
 
   /* Chips overlap text at this size — hide them */
   .hero-chip { display: none; }
