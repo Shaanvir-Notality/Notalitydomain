@@ -65,6 +65,7 @@ export default function MarketingSignupForm() {
         </div>
         <h4>You&apos;re on the list!</h4>
         <p>Thanks for signing up. We&apos;ll be in touch the moment Notality launches.</p>
+        <p style={{ marginTop: '10px', fontSize: '13px' }}>Please check your junk mail for the Notality welcome email.</p>
       </div>
     );
   }
