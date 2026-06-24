@@ -1,29 +1,36 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type SyntheticEvent } from 'react';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
 export default function MarketingSignupForm() {
   const [status, setStatus] = useState<Status>('idle');
   const [errorMsg, setErrorMsg] = useState('');
+  const [emailError, setEmailError] = useState('');
   const [consented, setConsented] = useState(false);
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus('submitting');
+    setEmailError('');
     setErrorMsg('');
 
     const form = e.currentTarget;
     const formData = new FormData(form);
+    const emailVal = formData.get('email')?.toString().trim() ?? '';
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+      setEmailError('Please enter a valid email address.');
+      return;
+    }
+
+    setStatus('submitting');
+
     const firstName = formData.get('firstName')?.toString().trim();
     const lastName = formData.get('lastName')?.toString().trim();
     const name = [firstName, lastName].filter(Boolean).join(' ') || undefined;
 
-    const payload = {
-      name,
-      email: formData.get('email')?.toString().trim(),
-    };
+    const payload = { name, email: emailVal };
 
     try {
       const res = await fetch('/api/subscribe', {
@@ -50,15 +57,20 @@ export default function MarketingSignupForm() {
 
   if (status === 'success') {
     return (
-      <p className="form-success">
-        You&apos;re on the list — we&apos;ll be in touch soon! 🎵
-      </p>
+      <div className="form-success">
+        <div className="form-success-icon">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
+        </div>
+        <h4>You&apos;re on the list!</h4>
+        <p>Thanks for signing up. We&apos;ll be in touch the moment Notality launches.</p>
+      </div>
     );
   }
 
   return (
     <form onSubmit={handleSubmit}>
-
       <div className="form-row">
         <div className="form-group">
           <label htmlFor="signup-first-name">First name</label>
@@ -74,7 +86,14 @@ export default function MarketingSignupForm() {
         <label htmlFor="signup-email">
           Email <span className="req">*</span>
         </label>
-        <input id="signup-email" name="email" type="email" required />
+        <input
+          id="signup-email"
+          name="email"
+          type="email"
+          required
+          className={emailError ? 'input-error' : ''}
+        />
+        {emailError && <p className="field-error">{emailError}</p>}
       </div>
 
       <div className="form-group form-group--checkbox">
@@ -89,7 +108,7 @@ export default function MarketingSignupForm() {
         </label>
       </div>
 
-      {status === 'error' && <p className="form-error">{errorMsg}</p>}
+      {status === 'error' && <p className="form-error-msg">{errorMsg}</p>}
 
       <button
         type="submit"
@@ -99,6 +118,7 @@ export default function MarketingSignupForm() {
         {status === 'submitting' ? 'Signing up…' : 'Sign up'}
       </button>
 
+      <p className="form-fine">We&apos;ll only use your email to tell you about Notality.</p>
     </form>
   );
 }
