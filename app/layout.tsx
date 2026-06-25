@@ -13,13 +13,13 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://notality.co.uk',
     siteName: 'Notality',
-    images: [{ url: '/assets/images/phonedemo-main.png', width: 1200, height: 630, alt: 'Notality music theory app on iPhone' }],
+    images: [{ url: 'https://notality.co.uk/assets/images/og-logo.png', width: 1200, height: 630, alt: 'Notality — music theory toolkit' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Notality | Music Theory Toolkit for Practicing Musicians',
     description: 'Chromatic tuner, chord builder, key finder and more. The music theory toolkit for practicing musicians.',
-    images: ['/assets/images/phonedemo-main.png'],
+    images: ['https://notality.co.uk/assets/images/og-logo.png'],
   },
   icons: {
     icon: [{ url: '/assets/icons/favicon.jpg', type: 'image/jpeg' }],
