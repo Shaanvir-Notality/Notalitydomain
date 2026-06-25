@@ -33,6 +33,7 @@ body {
   font-family: var(--font-body);
   min-height: 100dvh;
   padding-top: 71px;
+  overflow-x: hidden;
 }
 
 /* ── Fixed Header ─────────────────────────────────────────────────────────── */
@@ -926,11 +927,14 @@ body {
 
   .hero-fine { display: none; }
 
-  .hero-right { min-height: auto; }
+  .hero-right {
+    min-height: auto;
+    overflow: hidden;
+  }
 
   .phone-demo-img { max-height: 320px; }
 
-  .hero-glow { width: 220px; height: 220px; }
+  .hero-glow { width: 160px; height: 160px; }
 
   /* Chips overlap text at this size — hide them */
   .hero-chip { display: none; }
